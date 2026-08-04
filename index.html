@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bản đồ 17 chương — Capitalism: Competition, Conflict, Crises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f2ede0;
+    --paper-2: #e9e1ce;
+    --paper-3: #fffdf8;
+    --ink: #211D16;
+    --ink-soft: #5B5344;
+    --ink-faint: #8A8168;
+    --red: #8C2F26;
+    --red-soft: #C7897F;
+    --navy: #223652;
+    --navy-soft: #7C8FA6;
+    --gold: #8A6A24;
+    --gold-soft: #C9AE79;
+    --muted: #6B6455;
+    --line: #C9BEA0;
+    --line-soft: #DCD3B9;
+    --shadow: 0 2px 10px rgba(33,29,22,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 80px;}
+
+  header{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:6px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:8px;
+  }
+  h1{
+    font-family:'Noto Serif',serif;
+    font-weight:700;
+    font-size:32px;
+    line-height:1.15;
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--red);
+  }
+  .subtitle{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0;
+    max-width:680px;
+    line-height:1.5;
+  }
+  .stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    margin-top:18px;
+    border-top:1px solid var(--line);
+  }
+  .stat{
+    flex:1;
+    min-width:110px;
+    padding:12px 16px 4px 0;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .n{
+    font-family:'Noto Serif',serif;
+    font-weight:700;
+    font-size:22px;
+    color:var(--ink);
+    display:block;
+  }
+  .stat .l{
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+
+  .notice{
+    margin:22px 0 26px;
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    border-left:3px solid var(--red);
+    padding:12px 16px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .notice b{color:var(--ink);}
+  .notice p{margin:0 0 8px;}
+  .notice p:last-child{margin-bottom:0;}
+
+  .timeline{
+    margin:24px 0 30px;
+  }
+  .timeline-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--ink-faint);
+    margin-bottom:8px;
+  }
+  .tl-track{
+    display:flex;
+    height:50px;
+    border:1px solid var(--ink);
+    position:relative;
+  }
+  .tl-seg{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 14px;
+    color:var(--paper-3);
+    cursor:pointer;
+    transition:filter .15s ease;
+    border-right:1px solid rgba(0,0,0,.15);
+    position:relative;
+    background:none;
+    border-top:none;border-bottom:none;border-left:none;
+    text-align:left;
+    font-family:inherit;
+  }
+  .tl-seg:last-child{border-right:none;}
+  .tl-seg:hover{filter:brightness(1.08);}
+  .tl-seg.p1{background:var(--red);}
+  .tl-seg.p2{background:var(--navy);}
+  .tl-seg.p3{background:var(--gold);}
+  .tl-seg .t-title{font-size:13px;font-weight:600;line-height:1.2;}
+  .tl-seg .t-date{font-family:'IBM Plex Mono',monospace;font-size:10px;opacity:.85;margin-top:3px;}
+  .tl-meet{
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+
+  .layout{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:24px;
+    margin-top:8px;
+  }
+  .tabs{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    position:sticky;
+    top:20px;
+    align-self:start;
+  }
+  .tab-btn{
+    text-align:left;
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    border-left:4px solid transparent;
+    padding:11px 12px;
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .tab-btn .tt{
+    font-family:'Noto Serif',serif;
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--ink);
+    display:block;
+  }
+  .tab-btn .ts{
+    font-size:11px;
+    color:var(--ink-faint);
+    display:block;
+    margin-top:2px;
+  }
+  .tab-btn .tp{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-faint);
+    display:block;
+    margin-top:4px;
+  }
+  .tab-btn.active{background:var(--paper-3);box-shadow:var(--shadow);}
+  .tab-btn[data-p="p1"].active{border-left-color:var(--red);}
+  .tab-btn[data-p="p2"].active{border-left-color:var(--navy);}
+  .tab-btn[data-p="p3"].active{border-left-color:var(--gold);}
+
+  .search{
+    margin-top:10px;
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    background:var(--paper-3);
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    color:var(--ink);
+  }
+  .search::placeholder{color:var(--ink-faint);}
+
+  .panel{
+    background:var(--paper-3);
+    border:1px solid var(--line);
+    min-height:400px;
+  }
+  .panel-head{
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .panel-head h2{
+    font-family:'Noto Serif',serif;
+    font-size:19px;
+    margin:0 0 4px;
+  }
+  .panel-head .ph-sub{font-size:12px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;display:block;}
+  .panel-head .ph-intro{font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.55;max-width:760px;}
+  .panel-body{padding:6px 0;}
+
+  .chapter{border-bottom:1px solid var(--line-soft);}
+  .chapter:last-child{border-bottom:none;}
+  .chap-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:13px 20px;
+    cursor:pointer;
+  }
+  .chap-row:hover{background:var(--paper-2);}
+  .caret{
+    width:14px;flex:0 0 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    margin-top:4px;
+    transition:transform .12s ease;
+  }
+  .caret.open{transform:rotate(90deg);}
+  .chap-num{
+    font-family:'Noto Serif',serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink-faint);
+    flex:0 0 26px;
+    margin-top:1px;
+  }
+  .chap-main{flex:1;min-width:0;}
+  .chap-titles{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;}
+  .chap-vt{
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .chap-en{
+    font-size:12px;
+    font-style:italic;
+    color:var(--ink-faint);
+  }
+  .chap-badges{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px;}
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:2px 7px;
+    border:1px solid var(--line);
+    color:var(--ink-faint);
+    vertical-align:middle;
+  }
+  .badge.map{border-color:var(--red);color:var(--red);}
+  .chap-open-link{
+    flex:0 0 auto;
+    align-self:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--navy);
+    text-decoration:none;
+    border:1px solid var(--navy-soft);
+    padding:6px 10px;
+    white-space:nowrap;
+    transition:background .12s ease, color .12s ease;
+  }
+  .chap-open-link:hover{background:var(--navy);color:var(--paper-3);}
+  .chap-open-link-docx{border-color:var(--line);color:var(--ink-faint);margin-left:6px;}
+  .chap-open-link-docx:hover{background:var(--gold);color:var(--paper-3);border-color:var(--gold);}
+
+  .chap-body{
+    display:none;
+    padding:2px 20px 18px 58px;
+    background:rgba(0,0,0,0.015);
+  }
+  .chap-body.open{display:block;}
+  .chap-body p{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    margin:0 0 10px;
+    max-width:760px;
+  }
+  .chap-chips{margin:6px 0 14px;display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{
+    font-size:11px;
+    color:var(--ink-soft);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:999px;
+  }
+  .sub-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    margin:14px 0 6px;
+  }
+  .sub-list{border-top:1px solid var(--line-soft);}
+  .sub-row{
+    display:flex;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .sub-row:last-child{border-bottom:none;}
+  .sub-n{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-faint);
+    flex:0 0 20px;
+    margin-top:2px;
+  }
+  .sub-text .sub-title{font-size:12.5px;color:var(--ink);line-height:1.4;}
+  .sub-text .sub-eng{font-size:11px;color:var(--ink-faint);margin-top:1px;}
+
+  footer{
+    margin-top:34px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    font-size:11.5px;
+    color:var(--ink-faint);
+    font-family:'IBM Plex Mono',monospace;
+    line-height:1.6;
+  }
+
+  @media (max-width:760px){
+    .layout{grid-template-columns:1fr;}
+    .tabs{flex-direction:row;flex-wrap:wrap;position:static;}
+    .tab-btn{flex:1 1 45%;}
+    h1{font-size:24px;}
+    .chap-body{padding-left:20px;}
+    .chap-row{cursor:pointer;flex-wrap:wrap;}
+    .chap-open-link{flex:0 0 auto;margin:8px 6px 0 38px;text-align:center;max-width:160px;}
+    .chap-open-link-docx{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Anwar Shaikh · Capitalism: Competition, Conflict, Crises · Oxford University Press, 2016</div>
+    <h1>Bản đồ <em>17 chương</em></h1>
+    <p class="subtitle">Khung điều hướng cho toàn bộ dự án đọc sách — từ phê phán "trật tự và hỗn loạn" của tân cổ điển và hậu-Keynesian ở Chương 1, qua lý thuyết cạnh tranh thực và cổ điển vĩ mô, đến kết luận "không hề có Vườn Địa đàng nào cả" ở Chương 17.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="notice">
+    <p><b>Đây là trang bản đồ/khung điều hướng</b> cho 17 dashboard chương tương tác — mỗi mục dưới đây tóm tắt ngắn gọn nội dung một chương kèm danh sách các phần con, và liên kết trực tiếp tới file HTML đầy đủ của chương đó.</p>
+    <p><b>Chương 1</b> còn tích hợp sẵn một bản đồ tổng quan toàn cuốn sách (3 phần, thuật ngữ, bảng so sánh 3 trường phái, thẻ ghi nhớ, quiz) — có thể bắt đầu từ đó để có cái nhìn toàn cảnh trước khi đọc từng chương.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-label">Ba phần của cuốn sách — nhấn để đến phần tương ứng</div>
+    <div class="tl-track" id="tlTrack"></div>
+    <div class="tl-meet">Phần I &amp; II xây khung khái niệm và lý thuyết cạnh tranh thực → hội tụ thành Phần III: kinh tế vĩ mô hỗn loạn, lạm phát, và khủng hoảng định kỳ</div>
+  </div>
+
+  <div class="layout">
+    <div class="tabs" id="tabs"></div>
+    <div class="panel">
+      <div class="panel-head">
+        <h2 id="panelTitle">—</h2>
+        <span class="ph-sub" id="panelSub">—</span>
+        <div class="ph-intro" id="panelIntro"></div>
+      </div>
+      <div style="padding:0 20px;">
+        <input class="search" id="search" placeholder="Lọc theo tên chương, chủ đề, từ khóa...">
+      </div>
+      <div class="panel-body" id="panelBody"></div>
+    </div>
+  </div>
+
+  <footer>Nguồn: Anwar Shaikh, <i>Capitalism: Competition, Conflict, Crises</i> (Oxford University Press, 2016) — ghi chú đọc sách song ngữ Việt–Anh, biên soạn thành 17 dashboard chương tương tác (chuong-1.html – chuong-17.html). Số trang là độ dài ước tính của bản ghi chú từng chương, không phải số trang gốc trong ấn bản in.</footer>
+</div>
+
+<script>
+const DATA = {"meta": {"totalPages": 754, "totalChapters": 17, "totalParts": 3, "totalSections": 113, "publisher": "Oxford University Press, 2016"}, "parts": [{"key": "p1", "roman": "I", "label": "Phần I", "title": "Nền tảng của Phân tích", "engRange": "Part I: Foundations of the Analysis (chapters 1–6)", "intro": "Năm chương xây dựng bộ khung khái niệm: bằng chứng thực nghiệm về các khuôn mẫu dài hạn, phương pháp luận vi mô-vĩ mô, sản xuất, tiền tệ, và cuối cùng là lợi nhuận/tư bản — nền móng cho toàn bộ lý thuyết cạnh tranh thực ở Phần II.", "chapterRange": "1–6", "totalPages": 254, "chapters": [{"num": 1, "file": "chuong-1.html", "vt": "Nhập môn", "en": "Introduction", "pages": 53, "sectionLabel": "2 phần lớn", "tagline": "~53 trang gốc", "p": ["Chương mở đầu của Shaikh xuất phát từ một nghịch lý mà bất kỳ ai quan sát chủ nghĩa tư bản cũng nhận ra: nhìn từ xa, hệ thống có vẻ trật tự — tăng trưởng bền bỉ, năng suất và mức sống không ngừng đi lên. Nhưng nhìn gần, mọi thứ lại hỗn loạn — thông tin sai lệch, thất nghiệp, khủng hoảng, bất bình đẳng giữa các vùng và các thời kỳ.", "Shaikh nêu bốn điểm khác biệt cốt lõi của cuốn sách so với cả hai truyền thống trên, rồi phát triển khái niệm trung tâm xuyên suốt toàn bộ tác phẩm: <b>điều tiết hỗn loạn</b> (turbulent regulation)."], "chips": ["cạnh tranh thực", "điều tiết hỗn loạn"], "sections": [{"n": "0", "label": "Bối cảnh", "title": "Trật tự và Hỗn loạn — hai câu trả lời cũ", "eng": "Order and disorder — the neoclassical and Keynesian responses"}, {"n": "1", "label": "Cách tiếp cận của Shaikh", "title": "Lý thuyết về cái Thực — điều tiết hỗn loạn", "eng": "The real, not the perfect or the imperfect — turbulent regulation"}]}, {"num": 2, "file": "chuong-2.html", "vt": "Xu hướng Hỗn loạn và Cấu trúc Ẩn", "en": "Turbulent Trends and Hidden Structures", "pages": 19, "sectionLabel": "9 phần (I-IX)", "tagline": "Bằng chứng thực nghiệm dài hạn", "p": ["Minh họa bằng chứng thực nghiệm về các khuôn mẫu kinh tế dài hạn đặc trưng ở các nước tư bản phát triển: tăng trưởng bền bỉ về sản lượng, năng suất, lợi nhuận, việc làm — tất cả diễn ra trong-và-qua các chu kỳ tái diễn và những cuộc Đại khủng hoảng định kỳ.", "Khảo sát quan hệ lương thực tế–năng suất chịu ảnh hưởng xã hội, tác động tích cực của chính sách/thể chế lên thất nghiệp, sự tái xuất hiện đáng ngạc nhiên của các 'sóng dài vàng' (golden long waves) cho đến ngày nay, con đường dài hạn của khả năng sinh lời, sự bình quân hóa hỗn loạn tỷ suất lợi nhuận giữa các ngành, và cấu trúc quyết định giá tương đối công nghiệp.", "Kết thúc bằng góc nhìn dài hạn về sự gia tăng bất bình đẳng toàn cầu — nơi phát triển tồn tại song song với kém phát triển, tăng trưởng song song với suy thoái, giàu có cùng cực song song với nghèo đói cùng cực. Mục đích: xác lập rõ đối tượng nghiên cứu của cuốn sách chính là bản thân chủ nghĩa tư bản."], "chips": ["sóng dài (Kondratieff)", "bình quân hóa tỷ suất lợi nhuận", "bất bình đẳng toàn cầu", "chu kỳ công nghiệp"], "sections": [{"n": "0", "label": "Tăng trưởng Hỗn loạn", "title": "Tăng trưởng Hỗn loạn", "eng": "I. Turbulent Growth"}, {"n": "1", "label": "Lương & Thất nghiệp", "title": "Năng suất, Lương thực tế & Thất nghiệp", "eng": "II-III. Productivity, Real Wages, Real Unit Labor Costs, and Unemployment"}, {"n": "2", "label": "Giá & Sóng Vàng", "title": "Giá cả, Lạm phát và Sóng Vàng", "eng": "IV. Prices, Inflation, and the Golden Wave"}, {"n": "3", "label": "Lợi nhuận & Arbitrage", "title": "Tỷ suất Lợi nhuận Chung và Arbitrage Hỗn loạn", "eng": "V-VI. The General Rate of Profit and Turbulent Arbitrage"}, {"n": "4", "label": "Giá & Bất bình đẳng TG", "title": "Giá Tương đối và Hội tụ/Phân kỳ Toàn cầu", "eng": "VII-VIII. Relative Prices; Convergence and Divergence on a World Scale"}, {"n": "5", "label": "Tổng kết", "title": "Tổng kết Chương 2", "eng": "IX. Summary and Conclusions"}]}, {"num": 3, "file": "chuong-3.html", "vt": "Nền tảng Vi mô và Khuôn mẫu Vĩ mô", "en": "Micro Foundations and Macro Patterns", "pages": 45, "sectionLabel": "6 phần (I-VI)", "tagline": "Phương pháp luận vi mô-vĩ mô", "p": ["Đặt câu hỏi phương pháp luận cốt lõi: các khuôn mẫu dài hạn bền vững sinh ra thế nào từ một xã hội gồm những cá nhân luôn biến đổi, gắn trong các cấu trúc xã hội tiến hóa? 'Cân bằng như trạng thái tĩnh' bị thay bằng 'điều tiết hỗn loạn', đạt cân bằng chỉ qua các đợt vượt/hụt liên tục.", "Phê phán 'tác nhân đại diện' siêu duy lý của tân cổ điển trên ba mặt: (1) cần tác nhân bất biến qua các điều kiện lịch sử đổi thay để suy ra khuôn mẫu tổng ổn định; (2) hành vi tổng của một nhóm không tương ứng hành vi cá nhân bên dưới trừ khi mọi tác nhân giống hệt nhau; (3) siêu duy lý vừa không cần thiết (vì có thể suy ra khuôn mẫu quan sát được mà không cần nó) vừa không hữu ích (vì xuyên tạc động cơ thực sự).", "Chìa khóa: kết quả tổng có 'thuộc tính nổi lên' (emergent properties) từ tương tác giữa các cá thể — một chỉnh thể hữu cơ lớn hơn tổng các bộ phận. Bí mật nằm ở SỰ ĐA DẠNG của hành vi cá nhân: khuôn mẫu có quy luật có thể nổi lên từ tương tác của các đơn vị không đồng nhất, khiến kết quả tổng 'vô cảm mạnh mẽ' (robustly indifferent) với chi tiết vi mô. Minh chứng: có thể suy ra đường cầu tiêu dùng dốc xuống, độ co giãn thu nhập đặc trưng, tính phi tuyến của đường Engel, và tính gần-tuyến-tính của hàm tiêu dùng tổng — mà KHÔNG cần bất kỳ mô hình hành vi tiêu dùng cụ thể nào."], "chips": ["điều tiết hỗn loạn", "tác nhân đại diện (phê phán)", "thuộc tính nổi lên", "đường Engel"], "sections": [{"n": "0", "label": "Hai câu hỏi lớn", "title": "Hai câu hỏi phương pháp luận nền tảng", "eng": "I. Introduction"}, {"n": "1", "label": "Phê phán Siêu duy lý", "title": "Phê phán Hành vi Siêu duy lý và 'Homo Economicus'", "eng": "II.1 — Representing Individual Human Behavior"}, {"n": "2", "label": "Thuộc tính Nổi lên", "title": "Thuộc tính Nổi lên và Tranh luận về Vốn", "eng": "II.2-3 — Aggregate Behavior, Emergent Properties, and Rigor"}, {"n": "3", "label": "Cấu trúc Định hình", "title": "Cấu trúc Định hình: Suy ra các Quy luật Tiêu dùng", "eng": "III. Shaping Structures and Aggregate Emergent Properties"}, {"n": "4", "label": "Phương pháp luận", "title": "Phương pháp luận cho Phân tích Kinh tế", "eng": "IV. Methodology for Economic Analysis"}, {"n": "5", "label": "Điều tiết Hỗn loạn", "title": "Điều tiết Hỗn loạn và Nhịp độ Điều chỉnh", "eng": "V. Turbulent Gravitation"}, {"n": "6", "label": "Tổng kết & Mở rộng", "title": "Tổng kết: Cạnh tranh Thực, Arbitrage, và Lợi nhuận như Thước đo Khách quan", "eng": "VI. Summary and Central Implications"}]}, {"num": 4, "file": "chuong-4.html", "vt": "Sản xuất và Chi phí", "en": "Production and Costs", "pages": 45, "sectionLabel": "6 phần (I-VI)", "tagline": "Sản xuất, ca kíp, đường chi phí", "p": ["Đối lập quan niệm cổ điển (sản xuất có thời gian, lao động là chủ thể tích cực, đấu tranh về độ dài/cường độ ngày làm việc) với phương pháp luận phi thời gian, thụ động kiểu 'đầu vào-thành đầu ra' của các trường phái khác. Phân biệt đầu tư lưu động và đầu tư cố định, có hệ quả quan trọng cho động lực kinh tế.", "Phát hiện then chốt: các tổ hợp ca làm việc khác nhau sẽ 'chuyển đổi qua lại' (switch back and forth) dọc theo đường giới hạn khả năng sản xuất tùy mức độ sử dụng — kiểu 'tái chuyển đổi' (re-switching) mới này phá vỡ khả năng xây dựng một hàm sản xuất vi mô tân cổ điển.", "Đường chi phí hình chữ U tiêu chuẩn bị bác bỏ mạnh: chi phí biến đổi bình quân có những 'gai nhọn' (spikes) giữa các ca làm việc, kéo theo bước nhảy sắc trong chi phí biên — khiến quy tắc p = mc trở nên vô dụng để xác định điểm tối đa hóa lợi nhuận. Bằng chứng thực nghiệm cho thấy cách tiếp cận cổ điển phù hợp với dữ liệu thực tế hơn hẳn."], "chips": ["đầu tư lưu động/cố định", "tái chuyển đổi (re-switching)", "chi phí hình chữ U (bác bỏ)", "độ dài ngày làm việc"], "sections": [{"n": "0", "label": "Lao động & Đầu tư", "title": "Lao động Chủ động và Hai loại Đầu tư", "eng": "I-II.1 — Introduction; Circulating versus Fixed Investment"}, {"n": "1", "label": "Hạch toán & Lao động PSX", "title": "Hạch toán Quốc dân và Lao động Phi sản xuất", "eng": "II.2-3 — National Accounts; Production and Non-Production Labor"}, {"n": "2", "label": "Ngày làm việc: Lịch sử", "title": "Độ dài và Cường độ Ngày làm việc — Lịch sử Xã hội", "eng": "III.1-2 — Structural/Temporal Dimensions; Historical Determinants of the Working Day"}, {"n": "3", "label": "Tái chuyển đổi", "title": "Tái chuyển đổi: Phá vỡ Hàm Sản xuất Tân cổ điển", "eng": "III.3 / IV.1 — Re-switching Along the Production Possibilities Frontier"}, {"n": "4", "label": "Sản xuất theo Ca kíp", "title": "Sản xuất dưới Điều kiện Ca kíp được Quy định Xã hội", "eng": "IV.2 — Output and Coefficients under Socially Determined Work Conditions"}, {"n": "5", "label": "Ba Lý thuyết Chi phí", "title": "Ba Lý thuyết về Đường Chi phí — và Chi phí 'Gai nhọn'", "eng": "V.1-2 — Cost Curve Theories; Cost Curves under General Conditions"}, {"n": "6", "label": "Bằng chứng Thực nghiệm", "title": "Bằng chứng Thực nghiệm: Doanh nghiệp Nói Gì?", "eng": "VI. Empirical Evidence on Cost Curves"}]}, {"num": 5, "file": "chuong-5.html", "vt": "Trao đổi, Tiền tệ và Giá cả", "en": "Exchange, Money, and Price", "pages": 41, "sectionLabel": "4 phần (I-IV)", "tagline": "Nguồn gốc tiền & lý thuyết giá", "p": ["Phân biệt trao đổi với quà tặng (kể cả tục potlatch) và nghĩa vụ thanh toán với nợ thực sự. Hàng đổi hàng là hình thức trao đổi sớm nhất; tiền nảy sinh tự nhiên khi phạm vi trao đổi mở rộng, biến nhiều tỷ lệ trao đổi thành một tỷ lệ duy nhất với một hàng hóa được xã hội chọn làm vật ngang giá.", "Lược sử tiến hóa của tiền: từ hàng hóa-tiền (muối, gia súc, vỏ sò, ca cao...) đến xu đúc, token tư nhân/nhà nước, tiền pháp định không thể chuyển đổi, và tiền ngân hàng — với ba chức năng thiết yếu: phương tiện định giá, phương tiện lưu thông, phương tiện an toàn.", "Nối lý thuyết tiền tệ cổ điển với Marx: mức giá quốc gia = giá tương đối cạnh tranh của hàng hóa tính theo hàng hóa-tiền (vàng) × giá của chính hàng hóa-tiền đó. Chương kết bằng câu hỏi để ngỏ cho các chương 12-15: điều gì xảy ra khi tiền pháp định không còn gắn với bất kỳ hàng hóa-tiền nào?"], "chips": ["hàng hóa-tiền", "ba chức năng của tiền", "tiền pháp định", "giá cả sản xuất (Sraffa)"], "sections": [{"n": "0", "label": "Trao đổi & Nợ", "title": "Trao đổi, Nghĩa vụ Thanh toán, và Nợ", "eng": "I. Introduction"}, {"n": "1", "label": "Nguồn gốc Tiền", "title": "Nguồn gốc Tiền: Từ Hàng hóa-Tiền đến Đồng Xu", "eng": "II.1-3 — Money Commodities, Coins, Money Tokens"}, {"n": "2", "label": "Tiền Pháp định & NH", "title": "Tiền Pháp định, Ngân hàng và Tín dụng", "eng": "II.4-5 — Fiat Money, Banks, Credit"}, {"n": "3", "label": "Ba Chức năng Tiền", "title": "Ba Chức năng Thiết yếu của Tiền — và Vàng như Nơi Trú ẩn", "eng": "II.6 — Essential Functions of Money"}, {"n": "4", "label": "Lý thuyết Tiền tệ", "title": "Lý thuyết Tiền tệ Cổ điển và Cấu trúc Lý thuyết của Marx", "eng": "III.1-3 — Classical Theories of Money; Marx's Theory"}, {"n": "5", "label": "Bằng chứng: 1939/40", "title": "Bằng chứng Thực nghiệm: 220 năm Giá cả Anh-Mỹ", "eng": "III.4 — Empirical Patterns"}, {"n": "6", "label": "Giá dưới Tiền Hiện đại", "title": "Hướng tới Lý thuyết Giá dưới Tiền Hiện đại", "eng": "IV. Toward a Classical Theory of the Price Level Under Modern Money"}]}, {"num": 6, "file": "chuong-6.html", "vt": "Lợi nhuận và Tư bản", "en": "Capital and Profit", "pages": 51, "sectionLabel": "8 phần (I-VIII)", "tagline": "Tư bản, lợi nhuận & vấn đề chuyển hóa", "p": ["Định nghĩa tư bản không qua tính chất vật lý mà qua QUÁ TRÌNH nó vận hành: chu kỳ M–C–M′ (tiền → hàng hóa → nhiều tiền hơn) khác hẳn chu kỳ C–M–C (bán sức lao động để sống) của người làm công. Một chiếc xe có thể là của cải cá nhân với người này nhưng là tư bản với đại lý xe đang chờ bán.", "Theo James Steuart, có HAI nguồn lợi nhuận tổng: chuyển giao của cải ('mua rẻ bán đắt' — nền tảng của tư bản thương nghiệp) và sản xuất của cải mới dưới dạng sản phẩm thặng dư (nền tảng của tư bản công nghiệp). Lợi nhuận công nghiệp dương chỉ khi độ dài ngày làm việc vượt quá thời gian tái sản xuất mức sống công nhân — tức khi có lao động thặng dư; đây là kết quả XÃ HỘI, không phải thuần túy 'kỹ thuật'.", "'Vấn đề chuyển hóa' hóa ra tồn tại trong MỌI trường phái giá cả — tân cổ điển, Sraffa lẫn Marx — không chỉ riêng Marx như thường bị phê phán. Bằng chứng thực nghiệm: tỷ suất lợi nhuận tối đa doanh nghiệp giảm đều từ 1947; tỷ trọng lợi nhuận hoạt động ròng khá ổn định, giảm nhẹ thời 'kỷ nguyên vàng' của lao động (1947-1982) rồi tăng nhẹ khi các chính sách tân tự do xói mòn tỷ trọng lương."], "chips": ["M-C-M′ vs C-M-C", "lợi nhuận từ chuyển giao vs sản xuất", "vấn đề chuyển hóa (mọi trường phái)", "tỷ suất lợi nhuận tối đa giảm dần"], "sections": [{"n": "0", "label": "Tư bản là gì?", "title": "Tư bản là gì? — Một Quá trình, không phải một Vật", "eng": "I. Introduction"}, {"n": "1", "label": "Hai Nguồn gốc LN", "title": "Hai Nguồn gốc của Lợi nhuận Tổng — James Steuart", "eng": "II. The Two Sources of Aggregate Profits"}, {"n": "2", "label": "Lao động Thặng dư", "title": "Lao động Thặng dư — Điều kiện của Lợi nhuận Sản xuất", "eng": "III. Production, Labor Time, and Profit"}, {"n": "3", "label": "Giải pháp Chuyển hóa", "title": "Giải pháp Tổng quát cho 'Vấn đề Chuyển hóa'", "eng": "IV. Aggregate Profits and Transfers of Value"}, {"n": "4", "label": "Lợi nhuận Tài chính", "title": "Lợi nhuận Tài chính, Lãi vốn và 'Kim tự tháp Ngược'", "eng": "V. Financial Profits and Profit-on-Transfer"}, {"n": "5", "label": "Các Trường phái", "title": "Lý thuyết Lợi nhuận qua Các Trường phái", "eng": "VI-VII. Theories of Aggregate Profit; Critical Review"}, {"n": "6", "label": "Đo lường Thực nghiệm", "title": "Đo lường Lợi nhuận và Tư bản: Bằng chứng Thực nghiệm", "eng": "VIII. Measurement of Profit and Capital"}]}]}, {"key": "p2", "roman": "II", "label": "Phần II", "title": "Cạnh tranh Thực", "engRange": "Part II: Real Competition (chapters 7–11)", "intro": "Năm chương xây dựng lý thuyết cạnh tranh thực — nền tảng lý thuyết trung tâm của toàn cuốn sách — rồi áp dụng vào giá tương đối, tài chính, và thương mại quốc tế.", "chapterRange": "7–11", "totalPages": 277, "chapters": [{"num": 7, "file": "chuong-7.html", "vt": "Lý thuyết Cạnh tranh Thực", "en": "The Theory of Real Competition", "pages": 68, "sectionLabel": "7 phần (I-VII)", "tagline": "Mở đầu Phần II: Cạnh tranh Thực", "p": ["Trình bày nền tảng lý thuyết trung tâm của toàn cuốn sách. Động cơ lợi nhuận vốn có tính bành trướng: nhà đầu tư cố thu hồi nhiều tiền hơn số bỏ ra, và nếu thành công, lặp lại ở quy mô lớn hơn — va chạm với những người khác đang làm điều tương tự. Đây là cạnh tranh thực, mang tính đối kháng và hỗn loạn trong vận hành — khác cạnh tranh 'hoàn hảo' như <b>chiến tranh khác với ba-lê</b>.", "Cạnh tranh trong ngành buộc người sản xuất đặt giá đủ thấp để tồn tại, đồng thời cắt giảm chi phí (lương, độ dài/cường độ lao động, và trên hết là thay đổi kỹ thuật) để có thể cắt giá cạnh tranh. Giá của các người bán trong cùng ngành được bình quân hóa qua sự di động của khách hàng; tỷ suất lợi nhuận đầu tư mới giữa các ngành được bình quân hóa qua sự di động của tư bản — cả hai là THUỘC TÍNH NỔI LÊN, không ai chủ đích tạo ra.", "Khái niệm 'tư bản điều tiết' (regulating capital — hãng có chi phí thấp nhất định giá dẫn dắt ngành) là trung tâm. Bằng chứng thực nghiệm đồ sộ (OERG, Andrews, Geroski, Salter, Mueller, Tsoulfidis...) cho thấy: tỷ suất lợi nhuận TRUNG BÌNH vẫn phân tán giữa các ngành, nhưng tỷ suất lợi nhuận GIA TĂNG (trên đầu tư mới) bình quân hóa rất mạnh — đúng như giả thuyết cổ điển dự đoán, trái với cả tân cổ điển lẫn lý thuyết độc quyền."], "chips": ["cạnh tranh = chiến tranh, không phải ba-lê", "tư bản điều tiết", "tỷ suất lợi nhuận gia tăng bình quân hóa", "chọn kỹ thuật theo chi phí thấp nhất"], "sections": [{"n": "0", "label": "Cạnh tranh = Chiến tranh", "title": "Cạnh tranh Thực: 'Khác Cạnh tranh Hoàn hảo như Chiến tranh khác Ba lê'", "eng": "I. Introduction"}, {"n": "1", "label": "Cạnh tranh Trong/Giữa Ngành", "title": "Cạnh tranh Trong một Ngành và Giữa các Ngành", "eng": "II-III. Real Competition Within and Between Industries"}, {"n": "2", "label": "Tư bản Điều tiết", "title": "Tư bản Điều tiết: Ba Trường hợp — và 'Những cuộc Vượt qua', không phải Bằng nhau", "eng": "IV-V. Regulating Capitals; General Phenomena"}, {"n": "3", "label": "Hành vi Doanh nghiệp", "title": "Bằng chứng: Hành vi Doanh nghiệp Thực tế", "eng": "VI.1 — Evidence on the Behavior of the Firm"}, {"n": "4", "label": "Chi phí, Quy mô, LN", "title": "Bằng chứng: Chi phí, Quy mô Nhà máy và Lợi nhuận", "eng": "VI.2-4 — Salter's Evidence; Choice of Technique; Firm-Level Evidence"}, {"n": "5", "label": "Bình quân hóa TSLN", "title": "Bằng chứng: Bình quân hóa Tỷ suất Lợi nhuận Điều tiết", "eng": "VI.5 — Empirical Evidence on Equalization of Regulating Rates of Profit"}, {"n": "6", "label": "Tranh luận Chọn KT", "title": "Cuộc Tranh luận về Cạnh tranh, Chọn Kỹ thuật, và Tỷ suất Lợi nhuận", "eng": "VII. Debate on Competition, Choice of Technique, and Profit Rate"}]}, {"num": 8, "file": "chuong-8.html", "vt": "Các Lý thuyết Cạnh tranh khác & Bằng chứng", "en": "Debates on Perfect and Imperfect Competition", "pages": 53, "sectionLabel": "2 phần (I-II)", "tagline": "10 trường phái lý thuyết cạnh tranh", "p": ["Khảo sát toàn bộ phổ lý thuyết cạnh tranh: Smith/Ricardo/Marx (cổ điển — giá thị trường hấp dẫn quanh giá tự nhiên một cách 'vô chính phủ'), chuyển dịch hậu-cổ-điển sang cạnh tranh hoàn hảo (Jevons, Walras), phê phán Schumpeter và trường phái Áo, lý thuyết độc quyền/độc quyền nhóm (Hilferding, Lenin, Sweezy, Baran, Kalecki), và kinh tế học cổ điển hiện đại.", "Phê phán then chốt: lý thuyết cạnh tranh hoàn hảo BẤT NHẤT NỘI TẠI vì đòi hỏi kỳ vọng phi lý — nếu mọi hãng giống hệt nhau, bất kỳ tín hiệu nào khiến một hãng tăng sản lượng cũng khiến TẤT CẢ làm vậy, khiến giá sụp đổ; vậy mà lý thuyết vẫn giả định mỗi hãng riêng lẻ tin có thể bán bất kỳ số lượng nào ở mức giá cho trước. Điều này có nghĩa lý thuyết kỳ vọng duy lý KHÔNG THỂ đặt nền trên cạnh tranh hoàn hảo.", "Phần bằng chứng thực nghiệm bác bỏ giả thuyết 'cấu trúc-hiệu suất' (structure-performance): tỷ lệ tập trung ngành KHÔNG tương quan với tỷ suất lợi nhuận cao hơn; độ cứng giá KHÔNG tương quan với mức độ tập trung — bác bỏ cả lý thuyết độc quyền lẫn cạnh tranh hoàn hảo bằng cùng một bộ dữ liệu."], "chips": ["bất nhất nội tại của cạnh tranh hoàn hảo", "cấu trúc-hiệu suất (bác bỏ)", "độ cứng giá", "Kalecki & markup độc quyền"], "sections": [{"n": "0", "label": "Cổ điển: Smith-Marx", "title": "Cạnh tranh trong Kinh tế học Cổ điển: Smith, Ricardo, Marx", "eng": "I.1-2 — Classical Views; Marx"}, {"n": "1", "label": "Cạnh tranh Hoàn hảo", "title": "Sự Trỗi dậy của Cạnh tranh Hoàn hảo — và Phê phán Nội tại", "eng": "I.3-4 — Theory of Perfect Competition; It Requires Irrational Expectations"}, {"n": "2", "label": "Schumpeter & Áo", "title": "Schumpeter và Trường phái Áo: Phê phán nhưng không Từ bỏ", "eng": "I.5-6 — Schumpeter's Views; Austrian Views"}, {"n": "3", "label": "CNTB Độc quyền & KHH", "title": "Chủ nghĩa Tư bản Độc quyền Marxist và Cạnh tranh Không hoàn hảo", "eng": "I.7-8 — Marxian Monopoly Capitalism; Rise of Imperfect Competition"}, {"n": "4", "label": "Kalecki & Cổ điển HĐ", "title": "Kalecki, Hậu-Keynesian, và Kinh tế học Cổ điển Hiện đại", "eng": "I.9-10 — Kalecki and Post-Keynesian Views; Modern Classical Views"}, {"n": "5", "label": "BC: Tập trung & TSLN", "title": "Bằng chứng: Tập trung Hóa và Tỷ suất Lợi nhuận", "eng": "II.1-5 — Empirical Evidence: Concentration and Profit Rates"}, {"n": "6", "label": "BC: Biên LN & Cấu kết", "title": "Bằng chứng: Biên Lợi nhuận, Độ cứng Giá và Cấu kết", "eng": "II.6-7 — Profit Margins; Collusion and Profitability"}]}, {"num": 9, "file": "chuong-9.html", "vt": "Cạnh tranh và Giá Tương đối Liên ngành", "en": "Competition and Inter-Industrial Relative Prices", "pages": 63, "sectionLabel": "12 phần (I-XII)", "tagline": "\"Lý thuyết 93%\" đầy đủ", "p": ["Trình bày lý thuyết cổ điển về giá cả sản xuất — sinh ra từ ba quá trình bình quân hóa hỗn loạn: giá bán giữa người bán, thu nhập lao động giữa người lao động, tỷ suất lợi nhuận giữa các tư bản điều tiết. Giới thiệu khái niệm 'thời gian lao động tích hợp' (integrated labour time): lao động cần để sản xuất một hàng hóa CỘNG lao động cần cho mọi đầu vào của nó, và đầu vào của đầu vào...", "Kết quả thực nghiệm gây bất ngờ: khoảng cách giữa giá thị trường, giá trực tiếp (tỷ lệ với thời gian lao động tích hợp — tức giá trị lao động của Marx) và giá cả sản xuất chỉ vào khoảng 13-15% — RẤT NHỎ. Đường lương-lợi nhuận thực nghiệm gần như tuyến tính, ủng hộ mạnh mẽ lý thuyết giá cổ điển và dung hòa được cách đọc của Marx với Sraffa.", "Kết luận gây tranh cãi nhưng dựa trên dữ liệu: sự khác biệt giữa các dạng giá (thị trường/giá trị lao động/giá sản xuất) đủ nhỏ để 'triệt tiêu' ở cấp độ tổng — các tỷ lệ tổng về cơ bản giống nhau dù dùng dạng giá nào, đúng như chính Sraffa từng ghi nhận."], "chips": ["giá cả sản xuất", "thời gian lao động tích hợp", "khoảng cách giá chỉ ~13-15%", "đường lương-lợi nhuận gần tuyến tính"], "sections": [{"n": "0", "label": "Hai Giả thuyết Cổ điển", "title": "Hai Giả thuyết Cổ điển và Sản xuất Hàng hóa Giản đơn", "eng": "I-II. Introduction; Simple Commodity Production"}, {"n": "1", "label": "Phương trình Smith", "title": "Phương trình Nền tảng của Giá cả — Cách Diễn giải của Adam Smith", "eng": "III. The Fundamental Equation of Price"}, {"n": "2", "label": "Đo lường Khoảng cách", "title": "Đo lường Khoảng cách: Vì sao Hồi quy Thông thường Đánh lừa", "eng": "IV. Measuring the Distance Between Relative Prices and their Regulators"}, {"n": "3", "label": "BC: Giá TT vs Trực tiếp", "title": "Bằng chứng: Giá Thị trường so với Giá Trực tiếp", "eng": "V. Evidence on Market Prices in Relation to Direct Prices"}, {"n": "4", "label": "Lý thuyết Sraffa", "title": "Lý thuyết Giá Sản xuất của Sraffa và Tính Gần-Tuyến tính Thực nghiệm", "eng": "VI-VIII. Prices of Production; Evidence on Their Paths"}, {"n": "5", "label": "BC Tổng hợp & Lương-LN", "title": "Bằng chứng Tổng hợp và Đường Lương-Lợi nhuận Thực tế", "eng": "IX-X. Comprehensive Evidence; Wage-Profit Curves 1947-1998"}, {"n": "6", "label": "Nguồn gốc & Tổng kết", "title": "Nguồn gốc Lịch sử và Tổng kết Hàm ý", "eng": "XI-XII. Historical Origins; Summary and Implications"}]}, {"num": 10, "file": "chuong-10.html", "vt": "Lý thuyết Tài chính", "en": "Competition, Finance, and Interest Rates", "pages": 48, "sectionLabel": "8 phần (I-VIII)", "tagline": "Lãi suất như \"giá cả sản xuất\" của tài chính", "p": ["Mở rộng lập luận cổ điển sang tài chính: lãi suất là 'giá cung ứng tài chính', và cạnh tranh khiến tỷ suất lợi nhuận của các tư bản tài chính điều tiết hấp dẫn quanh tỷ suất lợi nhuận chung — y hệt bất kỳ giá cạnh tranh nào khác. Đầu tư được thúc đẩy bởi CHÊNH LỆCH giữa tỷ suất lợi nhuận và lãi suất (cả Marx và Keynes đều nhấn mạnh điều này).", "Cách tiếp cận này giải thích trực tiếp 'nghịch lý Gibson' (lãi suất danh nghĩa và mức giá tương quan DƯƠNG — trái ngược giả thuyết Fisher), và hóa giải một mâu thuẫn biểu kiến trong lập luận của Marx (ông phản đối 'lãi suất tự nhiên' nhưng vẫn nói tư bản tài chính phải tham gia bình quân hóa tỷ suất lợi nhuận — cả hai đều đúng).", "Giải thích 'câu đố phần bù vốn cổ phần' (equity premium puzzle): tỷ suất sinh lời trái phiếu thấp hơn cổ phiếu vì tỷ suất trái phiếu ngang lãi suất ngân hàng (thấp hơn tỷ suất lợi nhuận chung), còn tỷ suất cổ phiếu ngang tỷ suất lợi nhuận. Phê phán Giả thuyết Thị trường Hiệu quả (EMH) của Shiller: 'biến động thái quá' mà Shiller cáo buộc chỉ là ảo giác vì ông lấy một tỷ suất SINH LỜI KỲ VỌNG CỐ ĐỊNH làm chuẩn so sánh — trong khi tỷ suất lợi nhuận gia tăng thực tế vốn biến động mạnh và bám sát tỷ suất cổ phiếu."], "chips": ["nghịch lý Gibson", "câu đố phần bù cổ phần", "phê phán EMH (Shiller)", "đường cong lợi suất dốc lên"], "sections": [{"n": "0", "label": "Giá của Tài chính", "title": "Nhập môn: Lãi suất như \\u201cGiá Sản xuất\\u201d của Tài chính", "eng": "I. Introduction — Interest Rates, Bond Prices, Equity Prices, and Financial Arbitrage"}, {"n": "1", "label": "Cạnh tranh Ngân hàng", "title": "Cạnh tranh trong Khu vực Ngân hàng và Nghịch lý Gibson", "eng": "II. Competition and Interest Rates — The Banking Sector, Gibson's Paradox, and the Structural Yield Curve"}, {"n": "2", "label": "Cổ phiếu & Trái phiếu", "title": "Thị trường Cổ phiếu và Trái phiếu: Nguồn gốc của \\u201cEquity Premium\\u201d", "eng": "III-IV. Competition and the Stock Market / Competition and the Bond Market"}, {"n": "3", "label": "Tổng kết Lý thuyết", "title": "Tổng kết Lý thuyết Cổ điển về Tài chính: Bốn Mệnh đề", "eng": "V. Summary of the Classical Theory of Finance"}, {"n": "4", "label": "Bằng chứng Thực nghiệm", "title": "Bằng chứng Thực nghiệm: 150 Năm Dữ liệu Mỹ", "eng": "VI. Empirical Evidence — Figures 10.1-10.13, Tables 10.1-10.2"}, {"n": "5", "label": "Khảo sát Phê phán", "title": "Khảo sát Phê phán các Lý thuyết Lãi suất: Smith đến Panico", "eng": "VII. A Critical Survey of Interest Rate Theories"}, {"n": "6", "label": "Lý thuyết TT Chứng khoán", "title": "Lý thuyết Thị trường Chứng khoán và Tổng kết Chương", "eng": "VIII. Stock Market Theories — Arbitrage, EMH, Dividend-Discount Models, and Chapter Synthesis"}]}, {"num": 11, "file": "chuong-11.html", "vt": "Cạnh tranh Quốc tế", "en": "International Competition and the Theory of Exchange Rates", "pages": 45, "sectionLabel": "6 phần chính (I-VI)", "tagline": "Lợi thế tuyệt đối, không phải so sánh, chi phối thương mại", "p": ["Khép lại Phần II bằng ứng dụng lý thuyết cạnh tranh thực vào thương mại quốc tế. Lý thuyết lợi thế so sánh của Ricardo được chứng minh là KHÔNG đứng vững trong bối cảnh cạnh tranh thực: chi phí tương đối có thể không phản ứng đủ với thay đổi tỷ giá thực để lật đổ lợi thế chi phí tuyệt đối ban đầu — hãng có chi phí thấp hơn tuyệt đối có thể thống trị CẢ HAI ngành mãi mãi.", "Thay bằng lý thuyết lợi thế TUYỆT ĐỐI: tư bản điều tiết quốc tế trong mỗi ngành là hãng có chi phí lao động đơn vị thực tích hợp thấp nhất. Marx và Harrod đều chỉ ra điểm yếu chí mạng trong logic Ricardo: ông đánh đồng cán cân thương mại với cán cân thanh toán, coi dòng vốn tài chính hoàn toàn tách biệt khỏi dòng thương mại hàng hóa — điều phi lịch sử và phi lý thuyết.", "Tỷ giá thực gắn với chi phí lao động đơn vị tương đối tích hợp và tỷ lệ hàng ngoại thương/phi ngoại thương — KHÔNG tự động điều chỉnh để cân bằng thương mại như lý thuyết Ngang giá Sức mua (PPP) giả định. Bằng chứng 15 nước lớn giai đoạn 1960-2009 cho thấy PPP không hề đứng vững, trong khi thâm hụt/thặng dư thương mại kéo dài lại là CHUẨN MỰC, không phải ngoại lệ."], "chips": ["lợi thế tuyệt đối vs so sánh", "PPP (bác bỏ)", "cán cân thương mại ≠ cán cân thanh toán", "chi phí lao động đơn vị thực"], "sections": [{"n": "0", "label": "Toàn cầu hóa & Tân tự do", "title": "Nhập môn: Toàn cầu hóa, Tân tự do, và Điều Thực sự Đang Tranh cãi", "eng": "I. Introduction — Globalization, Neoliberalism, and Resituating the Debate"}, {"n": "1", "label": "Nền tảng Lý thuyết Chuẩn", "title": "Nền tảng Lý thuyết Mậu dịch Tự do Chuẩn và Hai Phản ứng Trước Thất bại", "eng": "II-III. The Theoretical Foundations of Conventional Trade Policy; Reactions to Its Problems"}, {"n": "2", "label": "Ricardo và Nghịch lý Kép", "title": "Nguyên tắc Chi phí So sánh của Ricardo và \\u201cNghịch lý Kép\\u201d", "eng": "IV. Ricardo's Principle of Comparative Cost — Numerical Example and the Ricardian Duality"}, {"n": "3", "label": "Lợi thế Chi phí Tuyệt đối", "title": "Cạnh tranh Thực Ngụ ý Lợi thế Chi phí Tuyệt đối", "eng": "V. Real Competition Implies Absolute Cost Advantage"}, {"n": "4", "label": "BC: Cán cân Thương mại", "title": "Bằng chứng Thực nghiệm: Cán cân Thương mại Bền bỉ và Câu đố PPP", "eng": "VI.1-2 (Part 1). Empirical Evidence — Persistent Trade Imbalances and the PPP Puzzles"}, {"n": "5", "label": "BC: Tỷ giá & Chi phí Lao động", "title": "Bằng chứng Thực nghiệm: Tỷ giá Thực và Chi phí Lao động Đơn vị", "eng": "VI.2 (Part 2). Empirical Evidence — US/Japan Real Exchange Rates vs Real Unit Labor Costs"}, {"n": "6", "label": "Hàm ý Chính sách", "title": "Hàm ý Chính sách, Con đường Cao/Thấp, và Tổng kết Chương", "eng": "VI.3. Implications; High Road vs Low Road; the China Debate; Chapter Synthesis"}]}]}, {"key": "p3", "roman": "III", "label": "Phần III", "title": "Vĩ mô Hỗn loạn", "engRange": "Part III: Turbulent Macro-Dynamics (chapters 12–17)", "intro": "Sáu chương cuối tổng hợp cạnh tranh thực với lý thuyết cầu hiệu quả, xây dựng lý thuyết cổ điển về thất nghiệp, lạm phát, và khủng hoảng — rồi khép lại bằng chương tổng kết bàn về bất bình đẳng và ý nghĩa cho phát triển toàn cầu.", "chapterRange": "12–17", "totalPages": 223, "chapters": [{"num": 12, "file": "chuong-12.html", "vt": "Sự trỗi dậy của Kinh tế học Vĩ mô Hiện đại", "en": "The Rise and Fall of Modern Macroeconomics", "pages": 58, "sectionLabel": "6 phần chính (I-VI)", "tagline": "Mở đầu Phần III: Kinh tế Vĩ mô Hỗn loạn", "p": ["Theo dõi hành trình từ cuộc đoạn tuyệt của Keynes với chính thống đương thời cho tới sự 'thu hồi' của kinh tế học tân-Walrasian. Keynes nhắm vào hai tuyên bố tân cổ điển: lương thực tế sẽ tự điều chỉnh để khôi phục đầy đủ việc làm; lãi suất thực sẽ tự động tạo đủ cầu. Ông thay bằng lý thuyết ưa thích thanh khoản và số nhân đầu tư.", "Lập luận của Keynes nhanh chóng bị 'nhốt' trong khung IS-LM tĩnh của Hicks — loại bỏ tỷ suất lợi nhuận kỳ vọng biến động, biến đầu tư thành hàm thụ động của lãi suất. Từ đây, Monetarism (Friedman) → New Classical (Lucas, kỳ vọng duy lý) → Lý thuyết Chu kỳ Kinh doanh Thực (RBCT) → New Keynesian nối tiếp nhau sụp đổ trước bằng chứng thực nghiệm, đặc biệt khi đường cong Phillips tan rã thập niên 1970 (lạm phát VÀ thất nghiệp cùng tăng).", "Phần cuối phân tích truyền thống 'không hoàn hảo' (Kalecki, hậu-Keynesian: Davidson, Godley-Taylor, Lavoie) — với 5 niềm tin chung: cầu dẫn dắt sản lượng, tiền nội sinh, dư thừa công suất/thất nghiệp là chuẩn mực, nhà nước có thể đạt đầy đủ việc làm. Shaikh chỉ ra các giả định thiếu nhất quán dòng-chảy-tồn-lượng (stock-flow) trong truyền thống này."], "chips": ["IS-LM (Hicks)", "kỳ vọng duy lý (Lucas)", "đường cong Phillips sụp đổ", "5 niềm tin hậu-Keynesian"], "sections": [{"n": "0", "label": "10 Vấn đề Cốt lõi", "title": "Nhập môn: Kinh tế Vĩ mô là gì, và Mười Vấn đề Cốt lõi", "eng": "I.1-5. Introduction — Aggregate Consequences, Idealized Worlds, and Ten Critical Issues"}, {"n": "1", "label": "Hạch toán & Trước Keynes", "title": "Hạch toán Vĩ mô và Trật tự Tân Cổ điển Trước Keynes", "eng": "I.6, II. Accounting for Aggregate Demand and Capacity; Pre-Keynesian Neoclassical Orthodoxy"}, {"n": "2", "label": "Bước ngoặt Keynes & IS-LM", "title": "Bước ngoặt của Keynes, Mô hình IS-LM, và Sự sụp đổ của Đường cong Phillips", "eng": "III. Keynes's Breakthrough"}, {"n": "3", "label": "Monetarism & Tỷ lệ Tự nhiên", "title": "Sự trở lại Tân-Walras: Monetarism và Tỷ lệ Thất nghiệp \\u201cTự nhiên\\u201d", "eng": "IV.1-2. Monetarism; The Natural Rate of Unemployment and NAIRU"}, {"n": "4", "label": "Kỳ vọng Duy lý & RBC", "title": "Kỳ vọng Siêu Duy lý, Tân Cổ điển Mới, và Chu kỳ Kinh doanh Thực", "eng": "IV.3-4. Rational Expectations and New Classical Theory; Real Business Cycle Theory"}, {"n": "5", "label": "Tân Keynesian & Kalecki", "title": "Kinh tế học Tân Keynesian, Kinh tế học Hành vi, và Kalecki", "eng": "IV.5-6, V. New Keynesian Economics; Behavioral Economics; Kalecki"}, {"n": "6", "label": "Kinh tế học Hậu-Keynesian", "title": "Kinh tế học Hậu-Keynesian: Davidson, Godley, Taylor", "eng": "VI. Post-Keynesian Economics"}]}, {"num": 13, "file": "chuong-13.html", "vt": "Động lực học Vĩ mô Cổ điển", "en": "Classical Macro Dynamics", "pages": 40, "sectionLabel": "3 phần chính (I-III)", "tagline": "Lợi nhuận là \"động cơ của Doanh nghiệp\"", "p": ["Xây dựng cách tiếp cận cổ điển cho kinh tế vĩ mô hiện đại, đặt nền trên cạnh tranh thực. Ý tưởng trung tâm: tốc độ tích lũy tư bản được thúc đẩy bởi tỷ suất lợi nhuận RÒNG kỳ vọng (= tỷ suất lợi nhuận kỳ vọng trừ lãi suất) — giống Keynes và Kalecki, nhưng khác ở chỗ tỷ suất kỳ vọng gắn chặt với tỷ suất THỰC TẾ theo kiểu 'phản thân' (reflexivity) của Soros.", "Phát hiện mấu chốt: giả định chuẩn rằng tỷ lệ tiết kiệm ĐỘC LẬP với đầu tư là KHÔNG nhất quán về dòng-chảy-tồn-lượng — vì tiết kiệm doanh nghiệp và đầu tư doanh nghiệp do CÙNG một thực thể thực hiện. Giải pháp cổ điển: tỷ lệ tiết kiệm phản ứng với khoảng cách tài trợ giữa đầu tư và tiết kiệm hiện có — điều này giải quyết được nghịch lý 'lưỡi dao' (knife-edge) nổi tiếng của Harrod: con đường 'đảm bảo' (warranted) trở nên hoàn toàn ỔN ĐỊNH.", "Hệ quả sâu xa: trong mô hình cổ điển, một cú tăng tạm thời của tỷ suất lợi nhuận ròng kỳ vọng sẽ nâng VĨNH VIỄN mức sản lượng và việc làm (chứ không chỉ tạm thời như số nhân Keynes tĩnh) — đây là 'số nhân cổ điển', tương đương nhưng mạnh hơn số nhân Keynesian."], "chips": ["tỷ suất lợi nhuận ròng kỳ vọng", "phản thân (reflexivity)", "tiết kiệm không độc lập với đầu tư", "giải nghịch lý lưỡi dao Harrod"], "sections": [{"n": "0", "label": "Nhập môn & Mâu thuẫn Keynes", "title": "Nhập môn: Xem lại Lý thuyết Cầu Hiệu quả", "eng": "I, II.1. Introduction; A Reconsideration of the Theory of Effective Demand"}, {"n": "1", "label": "Số nhân là Quá trình", "title": "Số nhân là một Quá trình: Tín dụng là Nhiên liệu, Nợ là Hệ quả", "eng": "II.2-4. The Temporal Implications of the Multiplier; Credit as Fuel and Debt as Consequence; the Constant Savings Rate"}, {"n": "2", "label": "Năng lực & Harrod", "title": "Mức Sử dụng Năng lực, Con đường Harrod, và \\u201cSố nhân Siêu việt\\u201d", "eng": "II.5, 8. Actual vs Normal Capacity Utilization; the Sraffian Supermultiplier Debate"}, {"n": "3", "label": "Xu hướng Tất định vs Ngẫu nhiên", "title": "Xu hướng Tất định vs Ngẫu nhiên: Khác biệt Sâu sắc nhất với Keynes", "eng": "II.6-7, 9-11. Reflexivity; Stock-Flow Stability; Deterministic vs Stochastic Trends"}, {"n": "4", "label": "Lợi nhuận là Trung tâm", "title": "Lợi nhuận là Trung tâm của Cả Cung lẫn Cầu", "eng": "II.12, III.1-2. Underutilized Resources as Normal; Modern Classical Economics — the Centrality of Profit"}, {"n": "5", "label": "Xây dựng Mô hình", "title": "Xây dựng Mô hình Cổ điển: Từ Tài trợ Nội bộ tới Tín dụng Ngân hàng", "eng": "III.3.i-xi. Profit, Investment Finance, and Growth — Building the Model Step by Step"}, {"n": "6", "label": "Tổng kết Động lực Cổ điển", "title": "Tổng kết: Cân bằng Cổ điển và Lý thuyết Tăng trưởng", "eng": "III.4-5. Summary of the Classical Dynamic and the Classical Theory of Growth"}]}, {"num": 14, "file": "chuong-14.html", "vt": "Thất nghiệp, Lương, Lợi nhuận và Tăng trưởng", "en": "The Theory of Wages and Unemployment", "pages": 39, "sectionLabel": "7 phần chính (I-VII)", "tagline": "\"Đường cong Cổ điển\": thất nghiệp bình thường do chính cạnh tranh tạo ra", "p": ["Rút ra liên kết cốt lõi: cạnh tranh dưới lương thực LINH HOẠT vẫn tạo ra một tỷ lệ thất nghiệp KHÔNG TỰ NGUYỆN bền vững — trái ngược hoàn toàn tân cổ điển (lương linh hoạt ắt dẫn đầy đủ việc làm) và khác cả hậu-Keynesian (cạnh tranh CÓ THỂ hoặc KHÔNG THỂ gây thất nghiệp). Goodwin đã hình thức hóa trực giác này của Marx thành mô hình 'đội quân dự bị lao động'.", "Xây dựng 'Đường cong Cổ điển' (Classical Curve): tốc độ thay đổi TỶ TRỌNG LƯƠNG (không phải lương danh nghĩa hay lương thực tế đơn thuần) là hàm số NGHỊCH với 'cường độ thất nghiệp' (= tỷ lệ thất nghiệp × thời gian thất nghiệp trung bình). Đây là một trong hai quan hệ nền tảng của mô hình Goodwin.", "Bằng chứng Mỹ 1948-2011: đường cong cổ điển ỔN ĐỊNH từ 1949-1982, sau đó DỊCH CHUYỂN XUỐNG khi các cuộc tấn công tân tự do nhắm vào công đoàn hóa bắt đầu — hạ thấp mức cường độ thất nghiệp 'tới hạn'. Nếu Phillips đặt câu hỏi của mình theo hướng cổ điển (tỷ trọng lương) thay vì lương danh nghĩa, có lẽ đã tránh được cuộc khủng hoảng lý thuyết về đường Phillips thời Stagflation 1970-80s."], "chips": ["thất nghiệp không tự nguyện bền vững", "Đường cong Cổ điển", "cường độ thất nghiệp", "mô hình Goodwin"], "sections": [{"n": "0", "label": "Lương qua Các Trường phái", "title": "Lương và Thất nghiệp trong Các Lý thuyết Kinh tế", "eng": "I, II.1-2. Introduction; Wages and Unemployment in Economic Theories"}, {"n": "1", "label": "Các Mô hình Hậu-Goodwin", "title": "Mô hình Goodwin và Các Phiên bản Hậu-Goodwin", "eng": "II.3. Goodwin and Post-Goodwin Approaches"}, {"n": "2", "label": "Đường cong Cổ điển", "title": "Lý thuyết Lương Thực: Từ Vi mô tới Vĩ mô, và \\u201cĐường cong Cổ điển\\u201d", "eng": "III.1-3. Theory of the Real Wage; Responsiveness of Labor Strength; the Classical Curve"}, {"n": "3", "label": "Động lực Đầy đủ", "title": "Động lực Đầy đủ: Tỷ lệ Tự nhiên Nội sinh và Hiệu ứng của Cú sốc Cầu", "eng": "III.4-5. Determinants of Unemployment; Effects of Productivity and Labor Force Growth"}, {"n": "4", "label": "'Bình thường' vs 'Tự nhiên'", "title": "Tỷ lệ \\u201cBình thường\\u201d và Tỷ lệ \\u201cTự nhiên\\u201d: Ba Cách Tiếp cận", "eng": "IV, V. Normal versus \\u201cNatural\\u201d Rates of Unemployment; the Classical Curve and the Phillips Curve"}, {"n": "5", "label": "BC: 60 Năm Lịch sử Mỹ", "title": "Bằng chứng Thực nghiệm: Sáu Thập kỷ Lịch sử Mỹ, 1948-2011", "eng": "VI. Empirical Evidence on Growth, Unemployment, and Wages"}, {"n": "6", "label": "Tổng kết & Chính sách", "title": "Tổng kết và Hàm ý Chính sách của Động lực học Vĩ mô Cổ điển", "eng": "VII. Summary and Implications of Classical Macro Dynamics"}]}, {"num": 15, "file": "chuong-15.html", "vt": "Lý thuyết Lạm phát dưới Tiền Pháp định", "en": "Modern Money and Inflation", "pages": 47, "sectionLabel": "9 phần chính (I-IX)", "tagline": "Lạm phát: cầu-kéo gặp phản ứng-cung, không phải NAIRU", "p": ["Khảo sát lịch sử dài từ tiền tư nhân đến tiền nhà nước, rồi phê phán chi tiết Chartalism/neo-Chartalism (tiền thân lý thuyết MMT hiện đại — Innes, Knapp, Wray, Bell): 5 mệnh đề cốt lõi của họ (thất nghiệp có thể giữ ở bất kỳ mức mong muốn; lương khu vực tư do lương ELR neo; giá cả do markup độc quyền trên lương danh nghĩa; nhà nước có thể neo TOÀN BỘ phổ lãi suất; nhà nước có thể ấn định tỷ giá danh nghĩa tùy ý) đều KHÔNG đứng vững trong lập luận cổ điển.", "Xây dựng lý thuyết lạm phát cổ điển: dưới tiền pháp định thuần túy, mức giá do TỔNG CUNG-CẦU quyết định (không phải giá tương đối của một hàng hóa-tiền). Giới hạn tăng trưởng đến từ việc KHÔNG nền kinh tế nào có thể tích lũy nhanh hơn tỷ suất lợi nhuận (tái đầu tư 100% thặng dư) — tỷ lệ tích lũy thực tế/tỷ suất lợi nhuận tối đa gọi là 'chỉ số tăng trưởng-sử dụng' (growth-utilization index), đóng vai trò như 'đồng hồ đo áp lực' của hệ thống — tương tự vai trò tỷ lệ thất nghiệp trong lý thuyết chuẩn.", "So sánh trực diện với giả thuyết NAIRU: cả hai đều kỳ vọng hệ thống trở về một mức 'bình thường', nhưng trong lý thuyết cổ điển đó là tỷ lệ thất nghiệp KHÔNG TỰ NGUYỆN (không liên quan trực tiếp lạm phát), còn NAIRU coi đó thực chất là mức đầy đủ việc làm. Bằng chứng thực nghiệm nhiều nước OECD và cả siêu lạm phát Argentina (1989: lạm phát 5.380%) đều khớp với dự đoán cổ điển."], "chips": ["Chartalism/MMT (phê phán)", "chỉ số tăng trưởng-sử dụng", "so sánh với NAIRU", "siêu lạm phát Argentina"], "sections": [{"n": "0", "label": "Nguồn gốc Tiền", "title": "Tiền, Thị trường, và Nhà nước: Một Lịch sử Lâu dài và Gập ghềnh", "eng": "I. Money, Markets, and the State"}, {"n": "1", "label": "Phê phán Chartalism", "title": "Chartalism và Tân-Chartalism (MMT): Một Đánh giá Phê phán", "eng": "II. Chartalist and Neo-Chartalist Visions of Money"}, {"n": "2", "label": "Tài chính Nhà nước", "title": "Tài chính Nhà nước Hiện đại dưới Tiền Pháp định", "eng": "III. Modern Governmental Finance"}, {"n": "3", "label": "Nền tảng Lý thuyết", "title": "Nền tảng: Tăng trưởng, Khả năng Sinh lời, và Mức Giá", "eng": "IV-VI. Growth, Profitability, and the Price Level; Demand-Pull; Supply-Response"}, {"n": "4", "label": "Lý thuyết Đầy đủ", "title": "Lý thuyết Lạm phát Cổ điển dưới Tiền Pháp định", "eng": "VII. The Theory of Inflation under Fiat Money"}, {"n": "5", "label": "BC: Mỹ và 10 Quốc gia", "title": "Bằng chứng Thực nghiệm: Mỹ và Mười Quốc gia (Handfas)", "eng": "VIII.1-2. Empirical Evidence — United States; Ten-Country Evidence (Handfas)"}, {"n": "6", "label": "Lạm phát Toàn cầu & Tổng kết", "title": "Lạm phát Toàn cầu, Siêu lạm phát Argentina, và Đối chiếu với NAIRU", "eng": "VIII.3-4, IX. World-Scale Inflation; Argentina; Summary and Comparison to NAIRU"}]}, {"num": 16, "file": "chuong-16.html", "vt": "Khủng hoảng Toàn cầu 2007 dưới Lăng kính Cổ điển", "en": "Growth, Profitability, and Recurrent Crises", "pages": 22, "sectionLabel": "5 phần chính (I-V)", "tagline": "\"Đại Khủng hoảng đầu tiên của thế kỷ 21\"", "p": ["Đọc lại cuộc Đại khủng hoảng đầu tiên của thế kỷ 21 — biểu hiện đầu tiên là sụp đổ tài chính (thị trường thế chấp dưới chuẩn Mỹ) nhưng đó KHÔNG PHẢI nguyên nhân gốc. Khủng hoảng định kỳ là điều HOÀN TOÀN BÌNH THƯỜNG trong lịch sử CNTB (1820s, 1870s, 1930s, 1970s) — chính logic lợi nhuận đẩy hệ thống lặp lại các khuôn mẫu này.", "Ba nhịp điệu chu kỳ lồng nhau: chu kỳ tồn kho nhanh (3-5 năm), chu kỳ tư bản cố định trung hạn (7-10 năm), và bên dưới tất cả là nhịp điệu chậm hơn — các pha dài luân phiên giữa tích lũy tăng tốc và giảm tốc (sóng dài Kondratieff). Khủng hoảng nổ ra đúng vào giữa các pha suy thoái dài — 2007 'đúng lịch trình'.", "Phân tích thời kỳ tân tự do (1980s trở đi): lãi suất giảm mạnh nâng tỷ suất lợi nhuận ròng, tấn công vào lương lao động, tín dụng tiêu dùng bùng nổ bù đắp cho lương trì trệ — tất cả sụp đổ khi khủng hoảng thế chấp nổ ra 2007. So sánh phản ứng các nước: Iceland để ngân hàng vỡ nợ, phá giá mạnh, phục hồi tương đối tốt; Ireland gánh nợ ngân hàng vào nhà nước, áp đặt cắt giảm lên dân chúng, thất nghiệp/nghèo đói tăng vọt. Khép lại bằng tranh luận thắt lưng buộc bụng vs kích cầu."], "chips": ["khủng hoảng định kỳ là bình thường", "3 nhịp chu kỳ lồng nhau", "so sánh Iceland/Ireland", "thắt lưng buộc bụng vs kích cầu"], "sections": [{"n": "0", "label": "Khủng hoảng Tái diễn", "title": "Nhập môn: Đại Khủng hoảng Tái diễn — và Luôn bị Phủ nhận", "eng": "I. Introduction — Depressions Recur, Depressions Are Denied"}, {"n": "1", "label": "Khả năng Sinh lời Hậu chiến", "title": "Khả năng Sinh lời Thời Hậu chiến: Từ Thời Vàng son tới Đình lạm", "eng": "II.1-3. Profitability in the Postwar Period — Normal and Actual Profit Rates; Productivity and Real Wages"}, {"n": "2", "label": "Bí mật của Cơn Bùng nổ", "title": "Bí mật của Cơn Bùng nổ Lớn: Lương Rẻ và Tài chính Rẻ", "eng": "II.4-6. Rate of Return; the Extraordinary Path of the Interest Rate; the Rate of Profit-of-Enterprise"}, {"n": "3", "label": "Khủng hoảng: Mỹ", "title": "Hiệu ứng Toàn cầu của Khủng hoảng: Nước Mỹ", "eng": "III.1. The Global Effects of the Current Crisis — United States"}, {"n": "4", "label": "Khủng hoảng: Thế giới", "title": "Hiệu ứng Toàn cầu của Khủng hoảng: Thế giới", "eng": "III.2-3. Other Developed Countries; Global Scale"}, {"n": "5", "label": "Bài học Chính sách", "title": "Bài học Chính sách: Thắt lưng buộc bụng vs Kích thích", "eng": "IV. Policy Lessons and Possibilities — Austerity versus Stimulus"}, {"n": "6", "label": "Vai trò Lý thuyết", "title": "Vai trò của Lý thuyết Kinh tế: Tổng kết Chương", "eng": "V. On the Role of Economic Theory"}]}, {"num": 17, "file": "chuong-17.html", "vt": "Kết luận", "en": "Summary and Conclusions", "pages": 17, "sectionLabel": "5 phần chính (I-V)", "tagline": "\"Không hề có Vườn Địa đàng nào cả\"", "p": ["Tổng kết: mọi mệnh đề trung tâm của phân tích kinh tế — quy luật cung-cầu, xác định lương/lợi nhuận, thay đổi công nghệ, giá tương đối, lãi suất, giá trái phiếu/cổ phiếu, tỷ giá, cán cân thương mại, tăng trưởng, thất nghiệp, lạm phát, và các cuộc khủng hoảng tổng quát định kỳ — đều có thể suy ra MÀ KHÔNG cần viện tới siêu duy lý, tối ưu hóa, cạnh tranh hoàn hảo, thông tin hoàn hảo, tác nhân đại diện, hay kỳ vọng duy lý.", "Bàn về lý thuyết phân phối thu nhập: cách tiếp cận 'hai giai cấp' của kinh tế-vật lý học (EPTC) cho thấy thu nhập lao động có xu hướng theo phân phối MŨ (hệ số Gini ≈ 0.50) còn thu nhập tài sản theo phân phối lũy thừa (Pareto) — mức độ bất bình đẳng tổng thể phụ thuộc chủ yếu vào tỷ lệ thu nhập tài sản/thu nhập lao động và mức độ tài chính hóa dòng thu nhập.", "Phê phán trực diện Piketty (r > g trong <i>Capital in the 21st Century</i>): thước đo tỷ suất lợi nhuận của Piketty KHÔNG NHẤT QUÁN — mẫu số (tư bản) bao gồm cả đất đai, bất động sản, tài sản tài chính ròng, nhưng tử số (lợi nhuận) lại loại trừ tô, lãi, lãi vốn và các khoản khác tương ứng với các tài sản đó — đây là lý do tỷ suất lợi nhuận của ông TĂNG trong Đại khủng hoảng và GIẢM trong các giai đoạn bùng nổ nửa sau thế kỷ 20, một kết quả hết sức trái ngược trực giác. Chương khép lại bằng hàm ý cho phát triển kinh tế toàn cầu: lợi thế cạnh tranh thuộc về ai có chi phí thấp hơn — không phải vấn đề 'hoàn hảo' hay 'không hoàn hảo' của thị trường."], "chips": ["EPTC — phân phối mũ vs Pareto", "phê phán Piketty (r>g)", "tổng kết không cần siêu duy lý", "hàm ý phát triển toàn cầu"], "sections": [{"n": "0", "label": "Mục đích Cuốn sách", "title": "Nhập môn: Mục đích Cuốn sách và Vì sao Ít Chú ý tới Phê phán Nội tại", "eng": "I. Introduction"}, {"n": "1", "label": "Quy luật Hình mẫu & Sóng Dài", "title": "Quy luật Hình mẫu từ Hành vi Dị biệt, và Sóng Dài", "eng": "II.1. Lawful Patterns Despite Heterogeneous Behaviors"}, {"n": "2", "label": "Bình quân hóa & Phân phối", "title": "Từ Bình quân hóa tới Phân phối Ổn định của Lương và Lợi nhuận", "eng": "II.2. Equalization Tendencies as a Basis for Stable Distributions of Wage and Profit Rates"}, {"n": "3", "label": "Vật lý Kinh tế: Phân phối", "title": "Vật lý Kinh tế: Phân phối Thu nhập Mũ và Pareto", "eng": "II.3. From Wage and Profit Rate Distributions to the Overall Income Distribution"}, {"n": "4", "label": "Bất bình đẳng & Lương XH", "title": "Bất bình đẳng Gia tăng và Lương Xã hội Ròng", "eng": "II.4, III. Rising Inequality and the Class Distribution of Income; Wages, Taxes, and the Net Social Wage"}, {"n": "5", "label": "Đối thoại với Piketty", "title": "Đối thoại với Piketty: \\u201cCapital in the Twenty-First Century\\u201d", "eng": "IV. Piketty"}, {"n": "6", "label": "Phát triển Toàn cầu", "title": "Phát triển và Kém Phát triển: Tổng kết Toàn cầu", "eng": "V. Development and Underdevelopment"}]}]}]};
+
+let currentPart = DATA.parts[0].key;
+
+function renderStats(){
+  const m = DATA.meta;
+  const stats = document.getElementById('stats');
+  const items = [
+    [m.totalChapters, 'Chương'],
+    [m.totalParts, 'Phần chính'],
+    ['~' + m.totalPages, 'Trang ghi chú (ước tính)'],
+    [m.totalSections, 'Mục / tiểu mục'],
+    ['2016', 'Xuất bản (OUP)']
+  ];
+  stats.innerHTML = items.map(function(it){
+    return '<div class="stat"><span class="n">'+it[0]+'</span><span class="l">'+it[1]+'</span></div>';
+  }).join('');
+}
+
+function renderTimeline(){
+  const track = document.getElementById('tlTrack');
+  track.innerHTML = '';
+  DATA.parts.forEach(function(p){
+    const seg = document.createElement('button');
+    seg.className = 'tl-seg ' + p.key;
+    seg.setAttribute('data-p', p.key);
+    seg.style.flex = String(p.totalPages);
+    seg.innerHTML = '<span class="t-title">'+p.roman+' · '+p.title+'</span><span class="t-date">Chương '+p.chapterRange+' · ≈'+p.totalPages+' trang</span>';
+    seg.addEventListener('click', function(){
+      currentPart = p.key;
+      render();
+      document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+    track.appendChild(seg);
+  });
+}
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  DATA.parts.forEach(function(p){
+    const btn = document.createElement('div');
+    btn.className = 'tab-btn' + (p.key===currentPart ? ' active':'');
+    btn.setAttribute('data-p', p.key);
+    btn.innerHTML = '<span class="tt">'+p.roman+' — '+p.label.toUpperCase()+'</span><span class="ts">'+p.title+'</span><span class="tp">chương '+p.chapterRange+' · '+p.chapters.length+' chương · ≈'+p.totalPages+' trang</span>';
+    btn.onclick = function(){ currentPart = p.key; render(); };
+    tabs.appendChild(btn);
+  });
+}
+
+function subRowHtml(s){
+  return '<div class="sub-row"><span class="sub-n">'+s.n+'</span><div class="sub-text"><div class="sub-title">'+s.title+'</div><div class="sub-eng">'+s.eng+'</div></div></div>';
+}
+
+function chapterHtml(ch){
+  const isCh1 = ch.num === 1;
+  const badges = [
+    '<span class="badge">≈'+ (ch.pages||'?') +' trang</span>',
+    '<span class="badge">'+ch.sectionLabel+'</span>'
+  ];
+  if(isCh1){ badges.push('<span class="badge map">★ bản đồ tích hợp</span>'); }
+  const paras = ch.p.map(function(t){ return '<p>'+t+'</p>'; }).join('');
+  const chips = ch.chips.map(function(c){ return '<span class="chip">'+c+'</span>'; }).join('');
+  const subs = ch.sections.map(subRowHtml).join('');
+  return '<div class="chapter" data-chapnum="'+ch.num+'">'+
+    '<div class="chap-row">'+
+      '<span class="caret">▸</span>'+
+      '<span class="chap-num">'+ch.num+'</span>'+
+      '<div class="chap-main">'+
+        '<div class="chap-titles"><span class="chap-vt">'+ch.vt+'</span><span class="chap-en">'+ch.en+'</span></div>'+
+        '<div class="chap-badges">'+badges.join('')+'</div>'+
+      '</div>'+
+      '<a class="chap-open-link" href="'+ch.file+'" target="_blank" rel="noopener" data-noToggle="1">Mở chương ↗</a>'+
+      '<a class="chap-open-link chap-open-link-docx" href="tomtat-'+ch.num+'.html" target="_blank" rel="noopener" data-noToggle="1">📄 Ghi chú gốc</a>'+
+    '</div>'+
+    '<div class="chap-body">'+
+      paras+
+      (chips ? '<div class="chap-chips">'+chips+'</div>' : '')+
+      (subs ? '<div class="sub-label">Các phần trong chương ('+ch.sections.length+')</div><div class="sub-list">'+subs+'</div>' : '')+
+    '</div>'+
+  '</div>';
+}
+
+function render(){
+  renderTabs();
+  const part = DATA.parts.find(function(p){ return p.key === currentPart; });
+  document.getElementById('panelTitle').textContent = part.roman + ' — ' + part.label.toUpperCase() + ': ' + part.title;
+  document.getElementById('panelSub').textContent = 'Chương ' + part.chapterRange + ' · ' + part.engRange;
+  document.getElementById('panelIntro').innerHTML = part.intro;
+  const body = document.getElementById('panelBody');
+  body.innerHTML = part.chapters.map(chapterHtml).join('');
+
+  document.querySelectorAll('.chap-row').forEach(function(row){
+    row.addEventListener('click', function(e){
+      if(e.target.closest('a')) return;
+      const chapter = row.parentElement;
+      const chapBody = chapter.querySelector('.chap-body');
+      const caret = row.querySelector('.caret');
+      chapBody.classList.toggle('open');
+      caret.classList.toggle('open');
+    });
+  });
+
+  document.getElementById('search').value = '';
+}
+
+document.getElementById('search').addEventListener('input', function(e){
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('#panelBody .chapter').forEach(function(chapter){
+    const hay = chapter.textContent.toLowerCase();
+    const match = q === '' || hay.includes(q);
+    chapter.style.display = match ? '' : 'none';
+    const chapBody = chapter.querySelector('.chap-body');
+    const caret = chapter.querySelector('.caret');
+    if(q !== '' && match){
+      chapBody.classList.add('open');
+      caret.classList.add('open');
+    } else if(q === ''){
+      chapBody.classList.remove('open');
+      caret.classList.remove('open');
+    }
+  });
+});
+
+renderStats();
+renderTimeline();
+render();
+</script>
+</body>
+</html>
